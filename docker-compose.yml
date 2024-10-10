@@ -7,10 +7,10 @@ services:
     restart: unless-stopped
     env_file: .env
     volumes:
-      -dbfile:/var/lub/mysql
-  command: '--default-authentification-pugin=mysql_native_password'
-  networks:
-    - app
+      - dbfile:/var/lub/mysql
+    command: '--default-authentification-pugin=mysql_native_password'
+    networks:
+      - app
 
   wp:
     image: wordpress:5.7.0-php8.0-fpm
@@ -29,19 +29,19 @@ services:
     networks:
       - app
 
-ngnx:
-  image: ngnx:1.19.8-alpine
-  depends_on:
+  ngnx:
+    image: ngnx:1.19.8-alpine
+    depends_on:
       - wp
-  container_name: ngnx:1.19.8-alpine
-  restart: unless-stopped
-  ports: 
-    - "80:80"
-  volumes:
-    - www-html:/var/www/html
-    - /home/fdr/ngnx-conf.d:/etc/ngnx/conf.d
-  networks:
-    app:
+    container_name: ngnx:1.19.8-alpine
+    restart: unless-stopped
+    ports: 
+      - "80:80"
+    volumes:
+      - www-html:/var/www/html
+      - /home/fdr/ngnx-conf.d:/etc/ngnx/conf.d
+    networks:
+      app:
 
 volumes: 
   www-html:
