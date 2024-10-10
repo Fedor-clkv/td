@@ -39,7 +39,7 @@ nginx:
     - "80:80"
   volumes:
     - www-html:/var/www/html
-    - /home/north/opt/ngnx-conf.d:/etc/ngnx/conf.d
+    - /home/fdr/ngnx-conf.d:/etc/ngnx/conf.d
   networks:
     app:
       driver: bridge
