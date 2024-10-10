@@ -29,7 +29,7 @@ wp:
   networks:
     - app
 
-nginx:
+ngnx:
   image: ngnx:1.19.8-alpine
   depends_on:
       - wp
@@ -42,4 +42,11 @@ nginx:
     - /home/fdr/ngnx-conf.d:/etc/ngnx/conf.d
   networks:
     app:
-      driver: bridge
+
+volumes: 
+  www-html:
+  dbfile:
+
+networks:
+  app:
+    driver: bridge
