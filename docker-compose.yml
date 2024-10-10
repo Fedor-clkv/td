@@ -30,7 +30,7 @@ services:
       - app
 
   ngnx:
-    image: ngnx:1.26.2-alpine
+    image: ngnx
     depends_on:
       - wp
     container_name: ngnx
