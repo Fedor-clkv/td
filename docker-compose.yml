@@ -30,10 +30,10 @@ services:
       - app
 
   ngnx:
-    image: ngnx:1.19.8-alpine
+    image: ngnx
     depends_on:
       - wp
-    container_name: ngnx:1.19.8-alpine
+    container_name: ngnx
     restart: unless-stopped
     ports: 
       - "80:80"
