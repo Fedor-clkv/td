@@ -12,22 +12,22 @@ services:
   networks:
     - app
 
-wp:
-  image: wordpress:5.7.0-php8.0-fpm
-  container_name: wordpress:5.7.0-php8.0-fpm
-  depedens_on:
-    - mysql
-  restart: unless-stopped
-  env_file: .env
-  environment: 
-    - WORDPRESS_DB_HOST=mysql:3306
-    - WORDPRESS_DB_USER=$MYSQL_USER
-    - WORDPRESS_DB_PASSWORD=$mysql_native_password
-    - WORPRESS_DB_NAME=$MYSQL_DATABASE
-  volumes: 
-    - www-html:/var/www/html
-  networks:
-    - app
+  wp:
+    image: wordpress:5.7.0-php8.0-fpm
+    container_name: wordpress:5.7.0-php8.0-fpm
+    depedens_on:
+      - mysql
+    restart: unless-stopped
+    env_file: .env
+    environment: 
+      - WORDPRESS_DB_HOST=mysql:3306
+      - WORDPRESS_DB_USER=$MYSQL_USER
+      - WORDPRESS_DB_PASSWORD=$mysql_native_password
+      - WORPRESS_DB_NAME=$MYSQL_DATABASE
+    volumes: 
+      - www-html:/var/www/html
+    networks:
+      - app
 
 ngnx:
   image: ngnx:1.19.8-alpine
