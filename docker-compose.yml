@@ -30,7 +30,7 @@ services:
       - app
 
   ngnx:
-    image: ngnx
+    image: ngnx:latest
     depends_on:
       - wp
     container_name: ngnx
